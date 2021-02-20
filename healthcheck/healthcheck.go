@@ -74,8 +74,8 @@ func PrintHealthCheckSummary(result HealthCheckResult) {
 	fmt.Printf("Done!\n\n")
 	fmt.Printf("Checked webistes: %d\n", result.TotalWebistes)
 	fmt.Printf("Successful websites: %d\n", result.TotalSuccessful)
-	fmt.Printf("Failure websites: %d \n", result.TotalFailure)
-	fmt.Printf("Total times to finished checking website: %s", utils.GetDurationString((result.Duration)))
+	fmt.Printf("Failure websites: %d\n", result.TotalFailure)
+	fmt.Printf("Total times to finished checking website: %s\n", utils.GetDurationString((result.Duration)))
 }
 
 func createWorker(jobs <-chan string, results chan<- bool, client *http.Client) {
