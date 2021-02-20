@@ -30,6 +30,8 @@ docker run -v $(pwd)/config.json:/go/src/app/config.json -v $(pwd)/test.csv:/go/
 
 ## configuration
 
+by default config path store at $HOME/.config/go-healthcheck/config.json, if not exist it will find in current path
+
 - MaxWorker : Worker size to be run healthcheck in parallel
 
 ### extra configuration
