@@ -13,9 +13,9 @@ import (
 // SentResult receive healthcheck and sent to line healthcheck server
 // It's will ignore if line api token is missing
 func SentResult(client *http.Client, healthCheckResult healthcheck.HealthCheckResult) {
-	lineAPIToken, err := config.GetString(config.LineAPIToken)
+	lineAPIToken, err := config.GetString(config.AccessToken)
 	if err != nil || lineAPIToken == "" {
-		fmt.Println("Line Login Access Token not found skipp send report")
+		fmt.Println("Access Token not found ignore send report")
 		return
 	}
 	body, _ := json.Marshal(healthCheckResult)

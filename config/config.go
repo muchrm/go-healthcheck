@@ -12,7 +12,7 @@ var (
 	MaxWorker                  string = "MaxWorker"
 	CSVPath                    string = "CSVPath"
 	HealthcheckTimeoutInSecond string = "HealthcheckTimeoutInSecond"
-	LineAPIToken               string = "LineAPIToken"
+	AccessToken                string = "AccessToken"
 	HealcheckReportAPI         string = "CSVPathMissing"
 	TypeMissMatchError         string = "TypeMissMatch"
 	CSVNotFoundError           string = "FileNotFound"
@@ -26,7 +26,7 @@ func InitConfig() {
 	viper.AddConfigPath("$HOME/.config/go-healthcheck")
 	viper.AddConfigPath(".")
 	viper.SetEnvPrefix("healthcheck")
-	viper.BindEnv(LineAPIToken)
+	viper.BindEnv(AccessToken)
 
 	args := os.Args[1:]
 	if len(args) > 0 && args[0] != "" {

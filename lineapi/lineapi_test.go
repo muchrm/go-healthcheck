@@ -33,7 +33,7 @@ func TestSentResult(t *testing.T) {
 		defer ts.Close()
 		client := ts.Client()
 		viper.Set(config.HealcheckReportAPI, ts.URL)
-		viper.Set(config.LineAPIToken, "123456")
+		viper.Set(config.AccessToken, "123456")
 		SentResult(client, healthcheck.HealthCheckResult{
 			TotalWebistes:   7,
 			TotalSuccessful: 5,
@@ -52,7 +52,7 @@ func TestSentResult(t *testing.T) {
 		defer ts.Close()
 		client := ts.Client()
 		viper.Set(config.HealcheckReportAPI, ts.URL)
-		viper.Set(config.LineAPIToken, nil)
+		viper.Set(config.AccessToken, nil)
 		SentResult(client, healthcheck.HealthCheckResult{
 			TotalWebistes:   7,
 			TotalSuccessful: 5,

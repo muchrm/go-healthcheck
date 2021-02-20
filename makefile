@@ -1,12 +1,11 @@
 repo = muchrm/go-healthcheck
 commit = latest
-name = krud
-
+name = go-healthcheck
 check: test vet ## Runs all tests
 install:
 	go install -v .
 build:
-	go build main.go
+	go build -o $(name) main.go
 docker:
 	docker build -f Dockerfile -t $(repo):$(commit) .
 vet: ## Run the vet tool
