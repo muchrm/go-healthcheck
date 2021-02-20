@@ -1,0 +1,9 @@
+[] get args
+[x] Read CSV file
+[x] Check Url Request status
+[x] Create Intrigation function
+[x] Capture time
+[x] Show Summary
+[ ] Get Token from line api
+[x] Send Result to Healthcheck API
+[x] Worker to manage concurrent
