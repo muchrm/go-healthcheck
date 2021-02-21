@@ -30,7 +30,7 @@ func IsServerTimeout(client *http.Client, url string) bool {
 
 // RunHealthCheck receive url array and run check timeout
 func RunHealthCheck(client *http.Client, URLS []string) HealthCheckResult {
-	fmt.Println("Perform website checking...")
+	fmt.Println("\nPerform website checking...")
 
 	start := time.Now()
 	totalJobs := len(URLS)
@@ -61,6 +61,7 @@ func RunHealthCheck(client *http.Client, URLS []string) HealthCheckResult {
 	}
 
 	elapsed := time.Since(start)
+	fmt.Printf("Done!\n\n")
 	return HealthCheckResult{
 		TotalWebistes:   totalJobs,
 		TotalSuccessful: totalSuccessful,
@@ -71,7 +72,6 @@ func RunHealthCheck(client *http.Client, URLS []string) HealthCheckResult {
 
 // PrintHealthCheckSummary print healthcheck result in a human readable format
 func PrintHealthCheckSummary(result HealthCheckResult) {
-	fmt.Printf("Done!\n\n")
 	fmt.Printf("Checked webistes: %d\n", result.TotalWebistes)
 	fmt.Printf("Successful websites: %d\n", result.TotalSuccessful)
 	fmt.Printf("Failure websites: %d\n", result.TotalFailure)
