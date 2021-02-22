@@ -18,6 +18,13 @@ var (
 	CSVNotFoundError           string = "FileNotFound"
 	CSVIncorrectFormatError    string = "CSVIncorrectFormat"
 	CSVPathMissingError        string = "CSVPathMissing"
+	AuthClientID               string = "ClientId"
+	AuthClientSecret           string = "ClientSecret"
+	AuthRedirectURI            string = "RedirectURI"
+	AuthHostAddr               string = "AuthHostAddr"
+	AuthHost                   string = "AuthHost"
+	AuthResourceHose           string = "AuthResourceHose"
+	AuthScopes                 string = "Scopes"
 )
 
 func InitConfig() {
@@ -35,6 +42,11 @@ func InitConfig() {
 
 	viper.SetDefault(MaxWorker, runtime.NumCPU())
 	viper.SetDefault(HealcheckReportAPI, "https://backend-challenge.line-apps.com/healthcheck/report")
+	viper.SetDefault(AuthHost, "https://access.line.me/oauth2/v2.1")
+	viper.SetDefault(AuthResourceHose, "https://api.line.me/oauth2/v2.1")
+	viper.SetDefault(AuthScopes, []string{"openid"})
+	viper.SetDefault(AuthRedirectURI, "http://127.0.0.1:8081/auth")
+	viper.SetDefault(AuthHostAddr, "127.0.0.1:8081")
 	viper.ReadInConfig()
 
 }
@@ -50,6 +62,14 @@ func GetString(configKey string) (string, error) {
 	configValue, ok := viper.Get(configKey).(string)
 	if !ok {
 		return "", errors.New(TypeMissMatchError)
+	}
+	return configValue, nil
+}
+
+func GetStringArray(configKey string) ([]string, error) {
+	configValue, ok := viper.Get(configKey).([]string)
+	if !ok {
+		return []string{}, errors.New(TypeMissMatchError)
 	}
 	return configValue, nil
 }

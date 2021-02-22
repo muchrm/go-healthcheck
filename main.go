@@ -9,16 +9,20 @@ import (
 	"github.com/muchrm/go-healthcheck/config"
 	"github.com/muchrm/go-healthcheck/healthcheck"
 	"github.com/muchrm/go-healthcheck/lineapi"
+	"github.com/muchrm/go-healthcheck/lineauth"
 	"github.com/muchrm/go-healthcheck/utils"
 )
 
 func main() {
 	config.InitConfig()
+
 	CSVPath, err := config.GetString(config.CSVPath)
 	if err != nil {
 		fmt.Println(config.CSVPathMissingError)
 		os.Exit(0)
 	}
+	lineauth.DetectAndAskForToken()
+
 	timeout, err := config.GetInt(config.HealthcheckTimeoutInSecond)
 	if err != nil {
 		timeout = 30

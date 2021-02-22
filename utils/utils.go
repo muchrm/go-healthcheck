@@ -1,7 +1,9 @@
 package utils
 
 import (
+	"crypto/rand"
 	"encoding/csv"
+	"encoding/hex"
 	"errors"
 	"fmt"
 	"io"
@@ -64,4 +66,13 @@ func GetDurationString(t time.Duration) string {
 		timeString = fmt.Sprintf("%s%d ms", timeString, milliseconds)
 	}
 	return timeString
+}
+
+func RandomString(length int) (string, error) {
+	b := make([]byte, length/2)
+	_, err := rand.Read(b)
+	if err != nil {
+		return "", err
+	}
+	return hex.EncodeToString(b), nil
 }
