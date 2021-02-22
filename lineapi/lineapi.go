@@ -26,6 +26,10 @@ func SentResult(client *http.Client, healthCheckResult healthcheck.HealthCheckRe
 		url,
 		bytes.NewBuffer(body),
 	)
+	if err != nil {
+		fmt.Println("NewRequest Error: skipp send report")
+	}
+
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", lineAPIToken))
 	resp, err := client.Do(req)

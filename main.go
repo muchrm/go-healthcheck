@@ -34,6 +34,9 @@ func main() {
 	}
 
 	URLS, err := utils.ReadCSVAndGetServerUrls(CSVPath)
+	if err != nil {
+		URLS = []string{}
+	}
 	healthCheckResult := healthcheck.RunHealthCheck(clientWithTimeout, URLS)
 	healthcheck.PrintHealthCheckSummary(healthCheckResult)
 	lineapi.SentResult(clientWithoutTimeout, healthCheckResult)
