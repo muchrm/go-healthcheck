@@ -1,3 +1,5 @@
 {
-    "AccessToken":""
+    "AccessToken":"",
+    "ClientSecret":"",
+    "ClientId":""
 }
